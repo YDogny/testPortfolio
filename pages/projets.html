@@ -76,14 +76,18 @@
 <header class="topbar">
   <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menu">☰</button>
   <a href="../index.html" class="topbar-brand">Yann <span>Dogny</span></a>
-  <ul class="topbar-nav">
+    <ul class="topbar-nav">
     <li><a href="../index.html" class="">Accueil</a></li>
-    <li><a href="../pages/cv.html" class="">CV</a></li>
-    <li><a href="../pages/competences.html" class="">Compétences</a></li>
-    <li><a href="../pages/projets.html" class="active">Projets</a></li>
-    <li><a href="../pages/stages.html" class="">Stages</a></li>
-    <li><a href="../pages/veille.html" class="">Veille</a></li>
-    <li><a href="../pages/contact.html" class="">Contact</a></li>
+    <li><a href="cv.html" class="">CV</a></li>
+    <li><a href="competences.html" class="">Compétences</a></li>
+    <li><a href="projets.html" class="active">Projets</a></li>
+    <li><a href="stages.html" class="">Stages</a></li>
+    <li><a href="veille.html" class="">Veille</a></li>
+    <li><a href="glpi.html" class="">GLPI</a></li>
+    <li><a href="contact.html" class="">Contact</a></li>
+  <button class="theme-toggle" onclick="toggleTheme()" id="topbar-theme-btn" aria-label="Changer le thème">
+    <span class="toggle-label" id="topbar-theme-label">Clair</span>
+  </button>
   </ul>
 </header>
 
@@ -92,14 +96,22 @@
 
 <!-- SIDEBAR DRAWER -->
 <nav class="sidebar" id="sidebar">
-  <div class="sidebar-section-label">Navigation</div>
+    <div class="sidebar-section-label">Navigation</div>
   <a href="../index.html" class="nav-link">Accueil</a>
-  <a href="../pages/cv.html" class="nav-link">CV</a>
-  <a href="../pages/competences.html" class="nav-link">Compétences</a>
-  <a href="../pages/projets.html" class="nav-link active">Projets</a>
-  <a href="../pages/stages.html" class="nav-link">Stages</a>
-  <a href="../pages/veille.html" class="nav-link">Veille</a>
-  <a href="../pages/contact.html" class="nav-link">Contact</a>
+  <a href="cv.html" class="nav-link">CV</a>
+  <a href="competences.html" class="nav-link">Compétences</a>
+  <a href="projets.html" class="nav-link active">Projets</a>
+  <a href="stages.html" class="nav-link">Stages</a>
+  <a href="veille.html" class="nav-link">Veille</a>
+  <a href="glpi.html" class="nav-link">GLPI</a>
+  <a href="contact.html" class="nav-link">Contact</a>
+
+  <div class="sidebar-divider"></div>
+  <button class="sidebar-theme-toggle" onclick="toggleTheme()" id="sidebar-theme-btn" aria-label="Changer le thème">
+    <span id="sidebar-theme-label">Mode sombre</span>
+    <span class="tgl-track"><span class="tgl-thumb"></span></span>
+  </button>
+
 </nav>
 
 <!-- MAIN -->
@@ -311,6 +323,32 @@
 
 <div class="toast" id="toast"></div>
 <script>
+/* ── Theme ── */
+(function(){
+  const saved = localStorage.getItem('theme');
+  if(saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)){
+    document.documentElement.setAttribute('data-theme','dark');
+  }
+})();
+
+function syncThemeButtons(){
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const tl = document.getElementById('topbar-theme-label');
+  const sl = document.getElementById('sidebar-theme-label');
+  if(tl){ tl.textContent = dark ? 'Sombre' : 'Clair'; }
+  if(sl){ sl.textContent = dark ? 'Mode clair' : 'Mode sombre'; }
+}
+
+function toggleTheme(){
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+  localStorage.setItem('theme', dark ? 'light' : 'dark');
+  syncThemeButtons();
+}
+
+document.addEventListener('DOMContentLoaded', syncThemeButtons);
+
+/* ── Sidebar ── */
 function toggleSidebar(){
   document.getElementById('sidebar').classList.toggle('open');
   document.getElementById('overlay').classList.toggle('open');
@@ -319,6 +357,8 @@ document.getElementById('overlay').addEventListener('click',()=>{
   document.getElementById('sidebar').classList.remove('open');
   document.getElementById('overlay').classList.remove('open');
 });
+
+/* ── Toast / copy ── */
 function showToast(msg){
   const t=document.getElementById('toast');
   t.textContent=msg; t.classList.add('show');

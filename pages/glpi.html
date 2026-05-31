@@ -3,9 +3,36 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact</title>
+  <title>GLPI — Yann Dogny</title>
   <link rel="stylesheet" href="../style.css"/>
-
+  <style>
+    .glpi-intro {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.75rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+    }
+    .glpi-intro p { font-size: 0.9rem; color: var(--ink2); line-height: 1.8; }
+    .ticket-grid { display: flex; flex-direction: column; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .ticket-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem;
+      box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    .ticket-card .tc-header { display: flex; align-items: center; justify-content: space-between; }
+    .ticket-card .tc-id { font-size: 0.7rem; font-weight: 700; color: var(--ink3); letter-spacing: 0.06em; }
+    .ticket-status {
+      font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.08em; padding: 0.18rem 0.6rem; border-radius: 100px;
+    }
+    .status-done   { background: var(--accent-bg); color: var(--accent); }
+    .status-prog   { background: #FDF3E7; color: #A05C10; }
+    .ticket-card h4 { font-size: 0.9rem; font-weight: 600; color: var(--ink); }
+    .ticket-card p  { font-size: 0.8rem; color: var(--ink2); line-height: 1.65; flex: 1; }
+    .ticket-card .tc-cat { font-size: 0.7rem; font-weight: 500; color: var(--accent2); }
+  </style>
 </head>
 <body>
 
@@ -13,15 +40,15 @@
 <header class="topbar">
   <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menu">☰</button>
   <a href="../index.html" class="topbar-brand">Yann <span>Dogny</span></a>
-    <ul class="topbar-nav">
+  <ul class="topbar-nav">
     <li><a href="../index.html" class="">Accueil</a></li>
     <li><a href="cv.html" class="">CV</a></li>
     <li><a href="competences.html" class="">Compétences</a></li>
     <li><a href="projets.html" class="">Projets</a></li>
     <li><a href="stages.html" class="">Stages</a></li>
     <li><a href="veille.html" class="">Veille</a></li>
-    <li><a href="glpi.html" class="">GLPI</a></li>
-    <li><a href="contact.html" class="active">Contact</a></li>
+    <li><a href="glpi.html" class="active">GLPI</a></li>
+    <li><a href="contact.html" class="">Contact</a></li>
   <button class="theme-toggle" onclick="toggleTheme()" id="topbar-theme-btn" aria-label="Changer le thème">
     <span class="toggle-label" id="topbar-theme-label">Clair</span>
   </button>
@@ -33,17 +60,15 @@
 
 <!-- SIDEBAR DRAWER -->
 <nav class="sidebar" id="sidebar">
-    <div class="sidebar-section-label">Navigation</div>
+  <div class="sidebar-section-label">Navigation</div>
   <a href="../index.html" class="nav-link">Accueil</a>
   <a href="cv.html" class="nav-link">CV</a>
   <a href="competences.html" class="nav-link">Compétences</a>
   <a href="projets.html" class="nav-link">Projets</a>
   <a href="stages.html" class="nav-link">Stages</a>
   <a href="veille.html" class="nav-link">Veille</a>
-  <a href="glpi.html" class="nav-link">GLPI</a>
-  <a href="contact.html" class="nav-link active">Contact</a>
-
-
+  <a href="glpi.html" class="nav-link active">GLPI</a>
+  <a href="contact.html" class="nav-link">Contact</a>
   <div class="sidebar-divider"></div>
   <button class="sidebar-theme-toggle" onclick="toggleTheme()" id="sidebar-theme-btn" aria-label="Changer le thème">
     <span id="sidebar-theme-label">Mode sombre</span>
@@ -56,35 +81,35 @@
 <main class="main">
 
   <div class="page-header">
-    <div class="breadcrumb">~/portfolio / <span>contact</span></div>
-    <h1>Contact</h1>
-    <p class="sub">Disponible pour stage, alternance ou projet — réponse sous 24h</p>
+    <div class="breadcrumb">~/portfolio / <span>glpi</span></div>
+    <h1>GLPI</h1>
+    <p class="sub">Gestion des tickets et du parc informatique</p>
   </div>
 
-  <div class="section-label">Canaux de communication</div>
-  <div class="contact-links">
-    <a href="mailto:yanndogny47@gmail.com" class="contact-link">
-      <div class="cl-icon">📧</div>
-      <div style="flex:1">
-        <div class="cl-label">Email · Canal principal</div>
-        <div class="cl-value">yanndogny47@gmail.com</div>
-      </div>
-      <button style="background:none;border:1px solid var(--border);border-radius:6px;padding:0.3rem 0.7rem;font-size:0.75rem;font-weight:500;color:var(--ink3);cursor:pointer;font-family:var(--sans);transition:all .15s" onclick="copyText(event,'yanndogny47@gmail.com')" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--ink3)'">Copier</button>
-    </a>
-    <a href="tel:0780429997" class="contact-link">
-      <div class="cl-icon">📞</div>
-      <div style="flex:1">
-        <div class="cl-label">Téléphone</div>
-        <div class="cl-value">07 80 42 99 97</div>
-      </div>
-      <button style="background:none;border:1px solid var(--border);border-radius:6px;padding:0.3rem 0.7rem;font-size:0.75rem;font-weight:500;color:var(--ink3);cursor:pointer;font-family:var(--sans);transition:all .15s" onclick="copyText(event,'0780429997')" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--ink3)'">Copier</button>
-    </a>
-    <div class="contact-link" style="cursor:default">
-      <div class="cl-icon">📍</div>
-      <div style="flex:1">
-        <div class="cl-label">Localisation</div>
-        <div class="cl-value">Bourran, 47320 — Nouvelle-Aquitaine</div>
-      </div>
+  <div class="glpi-intro">
+    <p>
+      GLPI (Gestionnaire Libre de Parc Informatique) est un logiciel open source de gestion de parc
+      informatique et de helpdesk. Il permet de suivre les incidents, les demandes de service,
+      les actifs matériels et logiciels, ainsi que la gestion des utilisateurs.
+      Utilisé dans le cadre du BTS SIO, GLPI illustre la compétence <strong>1.2 — Réponse aux
+      incidents et demandes d'assistance</strong>.
+    </p>
+  </div>
+
+  <div class="section-label">Exemple de ticket</div>
+  <div class="ticket-grid">
+
+    <img src="../image/ticket.png" alt="Ticket GLPI" style="width: 100%;">
+    <div class="glpi-intro">Voici un exemple de ticket réalisé avec un camarade de classe pour en comprendre le fonctionnement.</div>
+  </div>
+
+  <hr class="soft"/>
+
+  <div class="section-label">Compétences mobilisées</div>
+  <div class="info-table" style="max-width:600px">
+    <div class="info-row">
+      <span class="lbl" style="min-width:50px">1.2</span>
+      <span class="val">Réponse aux incidents et demandes d'assistance</span>
     </div>
   </div>
 

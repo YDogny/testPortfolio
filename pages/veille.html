@@ -3,9 +3,85 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Veille</title>
+  <title>Veille — Yann Dogny</title>
   <link rel="stylesheet" href="../style.css"/>
+  <style>
+    /* ── Tableau historique ── */
+    .histo-table { width:100%; border-collapse:collapse; font-size:0.82rem; margin-bottom:2rem; }
+    .histo-table thead th {
+      background:var(--accent); color:#fff;
+      padding:0.65rem 1rem; text-align:left;
+      font-size:0.7rem; font-weight:700;
+      text-transform:uppercase; letter-spacing:0.08em;
+    }
+    .histo-table thead th:first-child { border-radius:8px 0 0 0; }
+    .histo-table thead th:last-child  { border-radius:0 8px 0 0; }
+    .histo-table tbody tr { border-bottom:1px solid var(--border); transition:background 0.12s; }
+    .histo-table tbody tr:hover { background:var(--accent-bg); }
+    .histo-table tbody td { padding:0.65rem 1rem; color:var(--ink2); vertical-align:top; line-height:1.55; }
+    .histo-table tbody td:first-child { color:var(--accent); font-weight:700; white-space:nowrap; font-size:0.78rem; }
+    .histo-table tbody td:nth-child(2) { font-weight:600; color:var(--ink); }
+    .histo-table a.src-link {
+      display:inline-flex; align-items:center; gap:0.25rem;
+      font-size:0.7rem; color:var(--accent); font-weight:600;
+      text-decoration:none; margin-top:0.35rem;
+      border:1px solid rgba(59,91,219,0.25); border-radius:4px;
+      padding:0.1rem 0.5rem; background:var(--accent-bg);
+      transition:background 0.15s;
+    }
+    .histo-table a.src-link:hover { background:var(--accent); color:#fff; }
+    .platform-badge {
+      display:inline-block; font-size:0.65rem; font-weight:700;
+      text-transform:uppercase; letter-spacing:0.07em;
+      padding:0.15rem 0.55rem; border-radius:100px; margin-bottom:0.25rem;
+    }
+    .badge-gh { background:#1a1e2e; color:#6B8EFF; }
+    .badge-gl { background:#FFF0E8; color:#E24329; }
+    [data-theme="dark"] .badge-gh { background:rgba(107,142,255,0.15); }
+    [data-theme="dark"] .badge-gl { background:rgba(226,67,41,0.15); }
 
+    /* ── Articles ── */
+    .article-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem; margin-bottom:2rem; }
+    .article-card {
+      background:var(--bg2); border:1px solid var(--border);
+      border-radius:var(--radius); padding:1.25rem 1.35rem;
+      box-shadow:var(--shadow); display:flex; flex-direction:column; gap:0.5rem;
+      border-top:3px solid var(--accent);
+      transition:transform 0.15s, box-shadow 0.15s;
+    }
+    .article-card:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
+    .article-card .art-date { font-size:0.68rem; font-weight:600; color:var(--accent); letter-spacing:0.05em; text-transform:uppercase; }
+    .article-card h4 { font-size:0.92rem; font-weight:700; color:var(--ink); line-height:1.35; }
+    .article-card p  { font-size:0.8rem; color:var(--ink2); line-height:1.7; flex:1; }
+    .article-card .art-footer { display:flex; align-items:center; justify-content:space-between; gap:0.5rem; flex-wrap:wrap; margin-top:0.25rem; }
+    .article-card .art-source { font-size:0.7rem; color:var(--ink3); font-style:italic; }
+    .article-card a.art-link {
+      font-size:0.72rem; font-weight:600; color:var(--accent);
+      text-decoration:none; border:1px solid rgba(59,91,219,0.25);
+      border-radius:4px; padding:0.15rem 0.6rem; background:var(--accent-bg);
+      transition:background 0.15s; white-space:nowrap;
+    }
+    .article-card a.art-link:hover { background:var(--accent); color:#fff; }
+
+    /* ── Analyse ── */
+    .analysis-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:2rem; }
+    .analysis-box { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:1.25rem; box-shadow:var(--shadow); }
+    .analysis-box.plus  { border-top:3px solid var(--teal); }
+    .analysis-box.minus { border-top:3px solid #E24329; }
+    .analysis-box h4 { font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.09em; margin-bottom:0.75rem; }
+    .analysis-box.plus  h4 { color:var(--teal); }
+    .analysis-box.minus h4 { color:#E24329; }
+    .analysis-box ul { list-style:none; padding:0; display:flex; flex-direction:column; gap:0.4rem; }
+    .analysis-box ul li { font-size:0.82rem; color:var(--ink2); display:flex; gap:0.5rem; line-height:1.5; }
+    .analysis-box.plus  ul li::before { content:'✓'; color:var(--teal); font-weight:700; flex-shrink:0; }
+    .analysis-box.minus ul li::before { content:'✕'; color:#E24329; font-weight:700; flex-shrink:0; }
+
+    @media(max-width:600px){
+      .analysis-grid { grid-template-columns:1fr; }
+      .histo-table td:nth-child(4) { display:none; }
+      .histo-table th:nth-child(4) { display:none; }
+    }
+  </style>
 </head>
 <body>
 
@@ -14,116 +90,336 @@
   <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menu">☰</button>
   <a href="../index.html" class="topbar-brand">Yann <span>Dogny</span></a>
   <ul class="topbar-nav">
-<li><a href="../index.html" class="">Accueil</a></li>
-<li><a href="../pages/cv.html" class="">CV</a></li>
-<li><a href="../pages/competences.html" class="">Compétences</a></li>
-<li><a href="../pages/projets.html" class="">Projets</a></li>
-<li><a href="../pages/stages.html" class="">Stages</a></li>
-<li><a href="../pages/veille.html" class="active">Veille</a></li>
-<li><a href="../pages/contact.html" class="">Contact</a></li>
+    <li><a href="../index.html" class="">Accueil</a></li>
+    <li><a href="cv.html" class="">CV</a></li>
+    <li><a href="competences.html" class="">Compétences</a></li>
+    <li><a href="projets.html" class="">Projets</a></li>
+    <li><a href="stages.html" class="">Stages</a></li>
+    <li><a href="veille.html" class="active">Veille</a></li>
+    <li><a href="glpi.html" class="">GLPI</a></li>
+    <li><a href="contact.html" class="">Contact</a></li>
+  <button class="theme-toggle" onclick="toggleTheme()" id="topbar-theme-btn" aria-label="Changer le thème">
+    <span class="toggle-label" id="topbar-theme-label">Clair</span>
+  </button>
   </ul>
 </header>
 
-<!-- SIDEBAR OVERLAY -->
 <div class="sidebar-overlay" id="overlay"></div>
-
-<!-- SIDEBAR DRAWER -->
 <nav class="sidebar" id="sidebar">
   <div class="sidebar-section-label">Navigation</div>
   <a href="../index.html" class="nav-link">Accueil</a>
-<a href="../pages/cv.html" class="nav-link">CV</a>
-<a href="../pages/competences.html" class="nav-link">Compétences</a>
-<a href="../pages/projets.html" class="nav-link">Projets</a>
-<a href="../pages/stages.html" class="nav-link">Stages</a>
-<a href="../pages/veille.html" class="nav-link active">Veille</a>
-<a href="../pages/contact.html" class="nav-link">Contact</a>
-
+  <a href="cv.html" class="nav-link">CV</a>
+  <a href="competences.html" class="nav-link">Compétences</a>
+  <a href="projets.html" class="nav-link">Projets</a>
+  <a href="stages.html" class="nav-link">Stages</a>
+  <a href="veille.html" class="nav-link active">Veille</a>
+  <a href="glpi.html" class="nav-link">GLPI</a>
+  <a href="contact.html" class="nav-link">Contact</a>
+  <div class="sidebar-divider"></div>
+  <button class="sidebar-theme-toggle" onclick="toggleTheme()" id="sidebar-theme-btn" aria-label="Changer le thème">
+    <span id="sidebar-theme-label">Mode sombre</span>
+    <span class="tgl-track"><span class="tgl-thumb"></span></span>
+  </button>
 </nav>
 
-<!-- MAIN -->
 <main class="main">
 
   <div class="page-header">
     <div class="breadcrumb">~/portfolio / <span>veille</span></div>
     <h1>Veille Technologique</h1>
-    <p class="sub">Surveillance active des tendances et innovations IT</p>
+    <p class="sub">Évolution des plateformes collaboratives de développement</p>
   </div>
 
+  <!-- SUJET -->
   <div class="section-label">Sujet de veille</div>
   <div class="card" style="margin-bottom:2rem">
-    <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.09em;color:var(--ink3);margin-bottom:0.5rem">Thématique principale</div>
-    <h3 style="font-family:var(--serif);font-size:1.05rem;color:var(--ink);line-height:1.5;margin-bottom:0.75rem">Les nouvelles tendances du développement web et mobile : vers des applications plus intelligentes et performantes</h3>
-    <p style="font-size:0.85rem;color:var(--ink2);line-height:1.75">Dans un contexte d'évolution constante des technologies, les frameworks, architectures et outils de développement se transforment rapidement. Cette veille suit les innovations qui redéfinissent la création d'applications web et mobiles modernes.</p>
+    <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--accent);margin-bottom:0.6rem">Thématique principale</div>
+    <h3 style="font-family:var(--serif);font-size:1.1rem;color:var(--ink);line-height:1.5;margin-bottom:0.85rem">
+      Évolution des plateformes collaboratives de développement : comment GitHub et GitLab transforment les pratiques des équipes
+    </h3>
+    <p style="font-size:0.87rem;color:var(--ink2);line-height:1.8;margin-bottom:1rem">
+      Les plateformes de développement collaboratif ne se limitent plus à héberger du code. Portées par l'intelligence artificielle, elles deviennent de véritables environnements de développement intégrés — capables de générer du code, d'automatiser les tests, de sécuriser les pipelines et d'orchestrer des agents autonomes. Cette veille suit les évolutions techniques, leur impact sur les pratiques des développeurs et leurs enjeux pour les entreprises.
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;font-size:0.82rem">
+      <div style="background:var(--bg3);border-radius:8px;padding:0.85rem">
+        <div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:0.35rem">Axe 1</div>
+        <div style="color:var(--ink);font-weight:600">Nouveautés techniques</div>
+        <div style="color:var(--ink3);font-size:0.78rem;margin-top:0.2rem">Fonctionnalités IA, agents autonomes, CI/CD</div>
+      </div>
+      <div style="background:var(--bg3);border-radius:8px;padding:0.85rem">
+        <div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--teal);margin-bottom:0.35rem">Axe 2</div>
+        <div style="color:var(--ink);font-weight:600">Impact sur les pratiques</div>
+        <div style="color:var(--ink3);font-size:0.78rem;margin-top:0.2rem">Collaboration, workflows, revue de code</div>
+      </div>
+      <div style="background:var(--bg3);border-radius:8px;padding:0.85rem">
+        <div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--purple);margin-bottom:0.35rem">Axe 3</div>
+        <div style="color:var(--ink);font-weight:600">Points positifs et négatifs</div>
+        <div style="color:var(--ink3);font-size:0.78rem;margin-top:0.2rem">Gains, risques, dépendances</div>
+      </div>
+    </div>
   </div>
 
+  <!-- MOTS-CLÉS -->
   <div class="section-label">Mots-clés</div>
   <div class="tags" style="margin-bottom:2rem">
-    <span class="tag accent">Progressive Web Apps</span>
-    <span class="tag accent">Intelligence Artificielle</span>
-    <span class="tag blue">Web Assembly</span>
-    <span class="tag blue">Edge Computing</span>
-    <span class="tag">DevSecOps</span>
-    <span class="tag">API REST / GraphQL</span>
-    <span class="tag">Low-Code / No-Code</span>
-    <span class="tag">Cloud natif</span>
+    <span class="tag accent">GitHub Copilot</span>
+    <span class="tag accent">GitLab Duo</span>
+    <span class="tag accent">Agent IA</span>
+    <span class="tag blue">CI/CD</span>
+    <span class="tag">Collaboration</span>
   </div>
 
   <hr class="soft"/>
 
-  <div class="section-label">Sources &amp; outils de veille</div>
+  <!-- SOURCES -->
+  <div class="section-label">Sources et outils de veille</div>
   <div class="source-grid" style="margin-bottom:2rem">
     <div class="source-card">
-      <div style="font-size:1.2rem">📡</div>
-      <h4>Flux RSS</h4>
-      <p>Dev.to, CSS-Tricks, Smashing Magazine — actualités développement web en continu.</p>
+      <h4>Google Alerts</h4>
+      <p>Alertes sur "GitHub", "GitLab", "Copilot" — notifications par e-mail dès qu'une source indexée publie un contenu pertinent.</p>
+      <span class="src-type">Alertes · Temps réel</span>
+    </div>
+    <div class="source-card">
+      <h4>Feedly</h4>
+      <p>Agrégation des flux RSS : GitHub Blog, GitLab Blog — lecture centralisée des publications officielles et communautaires.</p>
       <span class="src-type">RSS · Quotidien</span>
     </div>
     <div class="source-card">
-      <div style="font-size:1.2rem">🐦</div>
-      <h4>Réseaux sociaux</h4>
-      <p>Listes X/Twitter et LinkedIn spécialisées tech. Comptes officiels des frameworks.</p>
+      <h4>X / Twitter</h4>
+      <p>Comptes officiels @github, @gitlab. Réactions en temps réel aux annonces et retours d'expérience terrain.</p>
       <span class="src-type">Social · Temps réel</span>
     </div>
     <div class="source-card">
-      <div style="font-size:1.2rem">🔔</div>
-      <h4>Google Alerts</h4>
-      <p>Alertes hebdomadaires sur les mots-clés de veille : nouveaux frameworks, failles, releases.</p>
-      <span class="src-type">Alertes · Hebdomadaire</span>
-    </div>
-    <div class="source-card">
-      <div style="font-size:1.2rem">📚</div>
-      <h4>Documentation officielle</h4>
-      <p>MDN Web Docs, documentation Symfony, PHP.net — sources primaires et fiables.</p>
-      <span class="src-type">Docs · À la demande</span>
-    </div>
-    <div class="source-card">
-      <div style="font-size:1.2rem">🎥</div>
-      <h4>Conférences &amp; talks</h4>
-      <p>YouTube — conférences DevoXX, SymfonyCon. Présentations de nouveautés techniques.</p>
-      <span class="src-type">Vidéo · Mensuel</span>
-    </div>
-    <div class="source-card">
-      <div style="font-size:1.2rem">💼</div>
-      <h4>Communautés pro</h4>
-      <p>GitHub Trending, Stack Overflow, Discord dev — tendances et discussions actives.</p>
-      <span class="src-type">Communauté · Hebdomadaire</span>
+      <h4>GitHub &amp; GitLab Changelog</h4>
+      <p>Sources primaires des évolutions : changelog.github.com et docs.gitlab.com/releases. Référence pour les faits techniques précis.</p>
+      <span class="src-type">Officiel · Mensuel</span>
     </div>
   </div>
 
   <hr class="soft"/>
 
-  <div class="section-label">Méthodologie</div>
-  <div class="method-list">
-    <div class="method-step"><div class="step-num">01</div><div class="step-content"><h4>Collecte automatique</h4><p>Agrégation des flux RSS, alertes Google et notifications réseaux sociaux.</p></div></div>
-    <div class="method-step"><div class="step-num">02</div><div class="step-content"><h4>Filtrage par pertinence</h4><p>Sélection des articles selon leur fiabilité, leur source et leur lien avec les technologies suivies.</p></div></div>
-    <div class="method-step"><div class="step-num">03</div><div class="step-content"><h4>Synthèse hebdomadaire</h4><p>Résumé des informations retenues et classement par importance et applicabilité.</p></div></div>
-    <div class="method-step"><div class="step-num">04</div><div class="step-content"><h4>Archivage</h4><p>Conservation des sources et notes dans un journal de veille structuré.</p></div></div>
+  <!-- TABLEAU HISTORIQUE -->
+  <div class="section-label">Historique des évolutions — déc. 2025 à mai 2026</div>
+
+  <div style="overflow-x:auto;margin-bottom:2rem">
+    <table class="histo-table">
+      <thead>
+        <tr>
+          <th>Date exacte</th>
+          <th>Plateforme</th>
+          <th>Nouveauté</th>
+          <th>Impact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>18 déc. 2025</td>
+          <td><span class="platform-badge badge-gh">GitHub</span></td>
+          <td>
+            Copilot Agent Skills : création de dossiers d'instructions que Copilot charge automatiquement selon le contexte, pour des tâches spécialisées et reproductibles
+            <br><a class="src-link" href="https://github.blog/changelog/2025-12-18-github-copilot-now-supports-agent-skills/" target="_blank">↗ GitHub Changelog</a>
+          </td>
+          <td>Personnalisation par projet ; Copilot s'adapte aux conventions de l'équipe</td>
+        </tr>
+        <tr>
+          <td>19 déc. 2025</td>
+          <td><span class="platform-badge badge-gh">GitHub</span></td>
+          <td>
+            Copilot Memory (préversion publique) : l'assistant mémorise les préférences et conventions du dépôt entre les sessions
+            <br><a class="src-link" href="https://github.blog/changelog/2025-12-19-copilot-memory-early-access-for-pro-and-pro/" target="_blank">↗ GitHub Changelog</a>
+          </td>
+          <td>Réduction des configurations répétitives ; contexte partagé entre coding agent et revue de code</td>
+        </tr>
+        <tr>
+          <td>18 déc. 2025</td>
+          <td><span class="platform-badge badge-gl">GitLab</span></td>
+          <td>
+            GitLab 18.7 : détection des faux positifs SAST par IA (bêta), intégrations AWS / Google Cloud / Postman, tableau de bord SDLC
+            <br><a class="src-link" href="https://about.gitlab.com/blog/gitlab-18-7-advancing-ai-automation/" target="_blank">↗ GitLab Blog</a>
+          </td>
+          <td>Réduction du temps de triage des vulnérabilités ; meilleure visibilité DevSecOps</td>
+        </tr>
+        <tr>
+          <td>22 déc. 2025</td>
+          <td><span class="platform-badge badge-gh">GitHub</span></td>
+          <td>
+            GitHub Actions : rendu des workflows de plus de 300 jobs via chargement différé ; filtrage des jobs par statut
+            <br><a class="src-link" href="https://github.blog/changelog/2025-12-22-improved-performance-for-github-actions-workflows-page/" target="_blank">↗ GitHub Changelog</a>
+          </td>
+          <td>Pipelines CI/CD complexes (monorepos) mieux gérés ; baisse des coûts runners de -39 % au 1er jan. 2026</td>
+        </tr>
+        <tr>
+          <td>15 jan. 2026</td>
+          <td><span class="platform-badge badge-gl">GitLab</span></td>
+          <td>
+            GitLab 18.8 : Duo Agent Platform disponible au grand public — orchestration unifiée d'agents IA sur tout le cycle logiciel (Planner Agent, Security Analyst Agent)
+            <br><a class="src-link" href="https://docs.gitlab.com/releases/18/gitlab-18-8-released/" target="_blank">↗ GitLab Release Notes</a>
+          </td>
+          <td>Les équipes peuvent déléguer des tâches entières à des agents IA, de la planification au déploiement</td>
+        </tr>
+        <tr>
+          <td>14 jan. 2026</td>
+          <td><span class="platform-badge badge-gh">GitHub</span></td>
+          <td>
+            Copilot CLI amélioré : agents spécialisés (Explore, Task, Code Review, Plan), mode Autopilot, délégation en tâche de fond avec &amp; et /resume
+            <br><a class="src-link" href="https://github.blog/changelog/2026-01-14-github-copilot-cli-enhanced-agents-context-management-and-new-ways-to-install/" target="_blank">↗ GitHub Changelog</a>
+          </td>
+          <td>Terminal transformé en environnement agentique complet ; plusieurs agents en parallèle</td>
+        </tr>
+        <tr>
+          <td>4 fév. 2026</td>
+          <td><span class="platform-badge badge-gh">GitHub</span></td>
+          <td>
+            VS Code v1.109 : support des agents Claude dans l'IDE, sandboxing des commandes terminal, mémoire inter-sessions, Agent Skills org-wide
+            <br><a class="src-link" href="https://github.blog/changelog/2026-02-04-github-copilot-in-visual-studio-code-v1-109-january-release/" target="_blank">↗ GitHub Changelog</a>
+          </td>
+          <td>Délégation de tâches à Anthropic's Claude agent SDK directement depuis VS Code</td>
+        </tr>
+        <tr>
+          <td>25 fév. 2026</td>
+          <td><span class="platform-badge badge-gh">GitHub</span></td>
+          <td>
+            Copilot CLI disponible au grand public pour tous les abonnés Copilot : agent autonome de terminal avec mémoire cross-session
+            <br><a class="src-link" href="https://github.blog/changelog/2026-02-25-github-copilot-cli-is-now-generally-available/" target="_blank">↗ GitHub Changelog</a>
+          </td>
+          <td>Développeurs sans IDE graphique couverts ; pipelines CI/CD pilotables par IA en ligne de commande</td>
+        </tr>
+        <tr>
+          <td>11 mars 2026</td>
+          <td><span class="platform-badge badge-gh">GitHub</span></td>
+          <td>
+            Copilot pour JetBrains : agents personnalisés, sous-agents et plan agent en disponibilité générale ; agent hooks en préversion
+            <br><a class="src-link" href="https://github.blog/changelog/2026-03-11-major-agentic-capabilities-improvements-in-github-copilot-for-jetbrains-ides/" target="_blank">↗ GitHub Changelog</a>
+          </td>
+          <td>Parité avec VS Code pour les équipes Java/Kotlin/Python/Go sous IntelliJ, PyCharm, WebStorm</td>
+        </tr>
+        <tr>
+          <td>21 mai 2026</td>
+          <td><span class="platform-badge badge-gl">GitLab</span></td>
+          <td>
+            GitLab 19.0 : Secrets Manager (bêta publique Premium/Ultimate), Developer Flow pour le cycle complet de MR, 4 nouveaux modèles open source auto-hébergés (Mistral Devstral, Kimi-K2, MiniMax)
+            <br><a class="src-link" href="https://docs.gitlab.com/releases/19/gitlab-19-0-released/" target="_blank">↗ GitLab Release Notes</a>
+          </td>
+          <td>Gestion des secrets centralisée sans outil tiers ; déploiements air-gapped / souverains couverts</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="soft"/>
+
+  <!-- ANALYSE -->
+  <div class="section-label">Analyse — points positifs et négatifs</div>
+  <div class="analysis-grid">
+    <div class="analysis-box plus">
+      <h4>Points positifs</h4>
+      <ul>
+        <li>Automatisation des tâches répétitives (PR, tests, corrections) grâce aux agents IA</li>
+        <li>Meilleure sécurité intégrée : détection SAST, gestion des secrets, scan de dépendances</li>
+        <li>Réduction des coûts CI/CD avec la baisse des tarifs GitHub Actions (-39 %)</li>
+        <li>Flexibilité multi-modèles : choix entre GPT, Claude, Gemini selon le besoin</li>
+        <li>Support des infrastructures souveraines avec les modèles open source de GitLab</li>
+        <li>Centralisation de tout le cycle DevSecOps dans une seule plateforme</li>
+      </ul>
+    </div>
+    <div class="analysis-box minus">
+      <h4>Points à surveiller</h4>
+      <ul>
+        <li>Risque de dépendance forte à un seul éditeur (vendor lock-in)</li>
+        <li>Coût des fonctionnalités IA avancées (AI Credits) difficile à anticiper</li>
+        <li>Questions sur la confidentialité : le code source transite via des API externes</li>
+        <li>Compétences humaines en revue de code et debugging risquent de s'atrophier</li>
+        <li>Concurrence accrue (Cursor, Claude Code) qui pousse à une course aux fonctionnalités</li>
+        <li>Complexité croissante des plateformes nécessitant une montée en compétence continue</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="soft"/>
+
+  <!-- ARTICLES -->
+  <div class="section-label">Articles sélectionnés</div>
+  <div class="article-grid">
+    <div class="article-card">
+      <span class="art-date">18–19 déc. 2025</span>
+      <h4>GitHub Copilot Skills &amp; Memory : l'IA apprend et mémorise</h4>
+      <p>GitHub livre deux fonctionnalités complémentaires : Agent Skills (dossiers d'instructions chargés automatiquement) et Memory (mémoire persistante du dépôt). L'IA cesse d'être un outil générique et commence à s'adapter au contexte de l'équipe.</p>
+      <div class="art-footer">
+        <span class="art-source">GitHub Changelog</span>
+        <a class="art-link" href="https://github.blog/changelog/2025-12-18-github-copilot-now-supports-agent-skills/" target="_blank">Lire →</a>
+      </div>
+    </div>
+    <div class="article-card">
+      <span class="art-date">15 jan. 2026</span>
+      <h4>GitLab Duo Agent Platform GA : l'IA agentique entre en production</h4>
+      <p>GitLab 18.8 marque un tournant : la plateforme d'orchestration d'agents est disponible au grand public. Elle couvre l'ensemble du cycle DevSecOps — planification, développement, sécurité et livraison — depuis une interface unifiée.</p>
+      <div class="art-footer">
+        <span class="art-source">GitLab Release Notes</span>
+        <a class="art-link" href="https://docs.gitlab.com/releases/18/gitlab-18-8-released/" target="_blank">Lire →</a>
+      </div>
+    </div>
+    <div class="article-card">
+      <span class="art-date">11 mars 2026</span>
+      <h4>GitHub Copilot JetBrains : agents personnalisés en GA</h4>
+      <p>Les capacités agentiques avancées (agents personnalisés, sous-agents, plan agent) arrivent en disponibilité générale sur JetBrains. Les équipes Java/Kotlin/Python qui vivaient dans IntelliJ ou PyCharm bénéficient désormais des mêmes outils que les utilisateurs VS Code.</p>
+      <div class="art-footer">
+        <span class="art-source">GitHub Changelog</span>
+        <a class="art-link" href="https://github.blog/changelog/2026-03-11-major-agentic-capabilities-improvements-in-github-copilot-for-jetbrains-ides/" target="_blank">Lire →</a>
+      </div>
+    </div>
+    <div class="article-card">
+      <span class="art-date">21 mai 2026</span>
+      <h4>GitLab 19.0 : Secrets Manager et modèles open source souverains</h4>
+      <p>GitLab 19 centralise la gestion des secrets dans la plateforme sans dépendance à des coffres-forts tiers. Signal fort pour la souveraineté : support de Mistral Devstral, Kimi-K2 et MiniMax pour les entreprises en environnement air-gapped ou soumises à des réglementations strictes.</p>
+      <div class="art-footer">
+        <span class="art-source">GitLab Release Notes</span>
+        <a class="art-link" href="https://docs.gitlab.com/releases/19/gitlab-19-0-released/" target="_blank">Lire →</a>
+      </div>
+    </div>
+    <div class="article-card">
+      <span class="art-date">25 fév. 2026</span>
+      <h4>Copilot CLI en disponibilité générale : l'agent arrive dans le terminal</h4>
+      <p>GitHub Copilot CLI quitte la préversion et devient accessible à tous les abonnés. Désormais un environnement agentique complet : planification, exécution multi-étapes, mémoire cross-session et mode Autopilot pour les tâches de bout en bout.</p>
+      <div class="art-footer">
+        <span class="art-source">GitHub Changelog</span>
+        <a class="art-link" href="https://github.blog/changelog/2026-02-25-github-copilot-cli-is-now-generally-available/" target="_blank">Lire →</a>
+      </div>
+    </div>
+    <div class="article-card">
+      <span class="art-date">22 déc. 2025</span>
+      <h4>GitHub Actions : -39 % sur les runners et gestion des grands workflows</h4>
+      <p>Double amélioration pour les équipes CI/CD : les coûts des runners hébergés chutent de 39 % au 1er janvier 2026, et les workflows de plus de 300 jobs sont désormais gérés via un chargement différé avec filtrage par statut.</p>
+      <div class="art-footer">
+        <span class="art-source">GitHub Changelog</span>
+        <a class="art-link" href="https://github.blog/changelog/2025-12-22-improved-performance-for-github-actions-workflows-page/" target="_blank">Lire →</a>
+      </div>
+    </div>
   </div>
 
 </main>
 
 <div class="toast" id="toast"></div>
 <script>
+(function(){
+  const saved = localStorage.getItem('theme');
+  if(saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)){
+    document.documentElement.setAttribute('data-theme','dark');
+  }
+})();
+function syncThemeButtons(){
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const tl = document.getElementById('topbar-theme-label');
+  const sl = document.getElementById('sidebar-theme-label');
+  if(tl){ tl.textContent = dark ? 'Sombre' : 'Clair'; }
+  if(sl){ sl.textContent = dark ? 'Mode clair' : 'Mode sombre'; }
+}
+function toggleTheme(){
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+  localStorage.setItem('theme', dark ? 'light' : 'dark');
+  syncThemeButtons();
+}
+document.addEventListener('DOMContentLoaded', syncThemeButtons);
 function toggleSidebar(){
   document.getElementById('sidebar').classList.toggle('open');
   document.getElementById('overlay').classList.toggle('open');

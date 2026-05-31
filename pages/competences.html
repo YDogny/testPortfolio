@@ -12,14 +12,18 @@
 <header class="topbar">
   <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menu">☰</button>
   <a href="../index.html" class="topbar-brand">Yann <span>Dogny</span></a>
-  <ul class="topbar-nav">
+    <ul class="topbar-nav">
     <li><a href="../index.html" class="">Accueil</a></li>
-    <li><a href="../pages/cv.html" class="">CV</a></li>
-    <li><a href="../pages/competences.html" class="active">Compétences</a></li>
-    <li><a href="../pages/projets.html" class="">Projets</a></li>
-    <li><a href="../pages/stages.html" class="">Stages</a></li>
-    <li><a href="../pages/veille.html" class="">Veille</a></li>
-    <li><a href="../pages/contact.html" class="">Contact</a></li>
+    <li><a href="cv.html" class="">CV</a></li>
+    <li><a href="competences.html" class="active">Compétences</a></li>
+    <li><a href="projets.html" class="">Projets</a></li>
+    <li><a href="stages.html" class="">Stages</a></li>
+    <li><a href="veille.html" class="">Veille</a></li>
+    <li><a href="glpi.html" class="">GLPI</a></li>
+    <li><a href="contact.html" class="">Contact</a></li>
+  <button class="theme-toggle" onclick="toggleTheme()" id="topbar-theme-btn" aria-label="Changer le thème">
+    <span class="toggle-label" id="topbar-theme-label">Clair</span>
+  </button>
   </ul>
 </header>
 
@@ -28,14 +32,22 @@
 
 <!-- SIDEBAR DRAWER -->
 <nav class="sidebar" id="sidebar">
-  <div class="sidebar-section-label">Navigation</div>
+    <div class="sidebar-section-label">Navigation</div>
   <a href="../index.html" class="nav-link">Accueil</a>
-  <a href="../pages/cv.html" class="nav-link">CV</a>
-  <a href="../pages/competences.html" class="nav-link active">Compétences</a>
-  <a href="../pages/projets.html" class="nav-link">Projets</a>
-  <a href="../pages/stages.html" class="nav-link">Stages</a>
-  <a href="../pages/veille.html" class="nav-link">Veille</a>
-  <a href="../pages/contact.html" class="nav-link">Contact</a>
+  <a href="cv.html" class="nav-link">CV</a>
+  <a href="competences.html" class="nav-link active">Compétences</a>
+  <a href="projets.html" class="nav-link">Projets</a>
+  <a href="stages.html" class="nav-link">Stages</a>
+  <a href="veille.html" class="nav-link">Veille</a>
+  <a href="glpi.html" class="nav-link">GLPI</a>
+  <a href="contact.html" class="nav-link">Contact</a>
+
+  <div class="sidebar-divider"></div>
+  <button class="sidebar-theme-toggle" onclick="toggleTheme()" id="sidebar-theme-btn" aria-label="Changer le thème">
+    <span id="sidebar-theme-label">Mode sombre</span>
+    <span class="tgl-track"><span class="tgl-thumb"></span></span>
+  </button>
+
 </nav>
 
 <!-- MAIN -->
@@ -60,7 +72,8 @@
         <li>Gérer des sauvegardes et vérifier la continuité du service</li>
         <li>Vérifier le respect des règles d'utilisation des ressources numériques</li>
       </ul>
-      <div class="used-in">Utilisé dans : <span>CanisPro Éducation</span></div>
+    
+      <div class="used-in">Utilisé dans : <span>CanisPro Éducation · Stage SEDIMA · Stage Campus Connecté · GLPI</span></div>
     </div>
   </details>
 
@@ -71,7 +84,8 @@
         <li>Collecter, suivre et orienter des demandes</li>
         <li>Traiter des demandes concernant les services réseau, système et applicatifs</li>
       </ul>
-    </div>
+      <div class="used-in">Utilisé dans : <span>GLPI</span></div>
+        </div>
   </details>
 
   <details>
@@ -82,7 +96,8 @@
         <li>Référencer les services en ligne et mesurer leur visibilité</li>
         <li>Participer à l'évolution d'un site Web exploitant les données de l'organisation</li>
       </ul>
-      <div class="used-in">Utilisé dans : <span>Portfolio · CanisPro Éducation · Projet Fâ · Pic du Midi · Site Web Personnel</span></div>
+    
+      <div class="used-in">Utilisé dans : <span>Portfolio · CanisPro Éducation · Projet Fâ · Pic du Midi · Site Web Personnel · Stage SEDIMA</span></div>
     </div>
   </details>
 
@@ -94,7 +109,8 @@
         <li>Planifier les activités (Gantt, SCRUM)</li>
         <li>Évaluer les indicateurs de suivi d'un projet et analyser les écarts</li>
       </ul>
-      <div class="used-in">Utilisé dans : <span>Portfolio · CanisPro Éducation · Projet Fâ · Stage Campus Connecté</span></div>
+    
+      <div class="used-in">Utilisé dans : <span>Portfolio · CanisPro Éducation · Projet Fâ · Stage SEDIMA · Stage Campus Connecté</span></div>
     </div>
   </details>
 
@@ -106,6 +122,7 @@
         <li>Déployer un service</li>
         <li>Accompagner les utilisateurs dans la mise en place d'un service</li>
       </ul>
+    
       <div class="used-in">Utilisé dans : <span>Portfolio · CanisPro Éducation · Stage Campus Connecté</span></div>
     </div>
   </details>
@@ -118,6 +135,7 @@
         <li>Mettre en œuvre des outils et stratégies de veille informationnelle</li>
         <li>Gérer son identité professionnelle et développer son projet professionnel</li>
       </ul>
+    
       <div class="used-in">Utilisé dans : <span>Portfolio · CanisPro Éducation · Pic du Midi · Site Web Personnel</span></div>
     </div>
   </details>
@@ -136,7 +154,8 @@
         <li>Réaliser les tests nécessaires à la validation ou à la mise en production</li>
         <li>Rédiger les documentations technique et utilisateur</li>
       </ul>
-      <div class="used-in">Utilisé dans : <span>Portfolio · CanisPro Éducation · Projet Fâ · Pic du Midi · Site Web Personnel · Stage Campus Connecté</span></div>
+    
+      <div class="used-in">Utilisé dans : <span>Portfolio · CanisPro Éducation · Projet Fâ · Pic du Midi · Site Web Personnel · Stage SEDIMA · Stage Campus Connecté</span></div>
     </div>
   </details>
 
@@ -149,7 +168,8 @@
         <li>Analyser et corriger un dysfonctionnement</li>
         <li>Mettre à jour les documentations technique et d'utilisation</li>
       </ul>
-      <div class="used-in">Utilisé dans : <span>Portfolio · CanisPro Éducation</span></div>
+    
+      <div class="used-in">Utilisé dans : <span>Portfolio · CanisPro Éducation · Stage Campus Connecté</span></div>
     </div>
   </details>
 
@@ -162,6 +182,7 @@
         <li>Concevoir ou adapter une base de données (MERISE, UML)</li>
         <li>Administrer et déployer une base de données</li>
       </ul>
+    
       <div class="used-in">Utilisé dans : <span>CanisPro Éducation · Projet Fâ · Stage Campus Connecté</span></div>
     </div>
   </details>
@@ -176,6 +197,8 @@
         <li>Identifier les risques liés à la collecte, au traitement et au stockage</li>
         <li>Appliquer la réglementation RGPD / CNIL</li>
       </ul>
+    
+      <div class="used-in">Utilisé dans : <span>Stage SEDIMA</span></div>
     </div>
   </details>
 
@@ -197,7 +220,8 @@
         <li>Identifier les menaces et mettre en œuvre les défenses appropriées</li>
         <li>Gérer les accès et les privilèges (pare-feu, antivirus)</li>
       </ul>
-      <div class="used-in">Utilisé dans : <span>CanisPro Éducation</span></div>
+    
+      <div class="used-in">Utilisé dans : <span>CanisPro Éducation · Stage SEDIMA · Stage Campus Connecté</span></div>
     </div>
   </details>
 
@@ -211,6 +235,7 @@
         <li>Organiser la collecte et la conservation des preuves numériques</li>
         <li>Appliquer les procédures légales</li>
       </ul>
+    
       <div class="used-in">Utilisé dans : <span>Stage Campus Connecté</span></div>
     </div>
   </details>
@@ -223,6 +248,7 @@
         <li>Analyser les connexions (logs) et prévenir les attaques courantes</li>
         <li>Mettre en conformité une solution applicative avec un référentiel de sécurité</li>
       </ul>
+    
       <div class="used-in">Utilisé dans : <span>CanisPro Éducation · Stage Campus Connecté</span></div>
     </div>
   </details>
@@ -231,6 +257,32 @@
 
 <div class="toast" id="toast"></div>
 <script>
+/* ── Theme ── */
+(function(){
+  const saved = localStorage.getItem('theme');
+  if(saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)){
+    document.documentElement.setAttribute('data-theme','dark');
+  }
+})();
+
+function syncThemeButtons(){
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const tl = document.getElementById('topbar-theme-label');
+  const sl = document.getElementById('sidebar-theme-label');
+  if(tl){ tl.textContent = dark ? 'Sombre' : 'Clair'; }
+  if(sl){ sl.textContent = dark ? 'Mode clair' : 'Mode sombre'; }
+}
+
+function toggleTheme(){
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+  localStorage.setItem('theme', dark ? 'light' : 'dark');
+  syncThemeButtons();
+}
+
+document.addEventListener('DOMContentLoaded', syncThemeButtons);
+
+/* ── Sidebar ── */
 function toggleSidebar(){
   document.getElementById('sidebar').classList.toggle('open');
   document.getElementById('overlay').classList.toggle('open');
@@ -239,6 +291,8 @@ document.getElementById('overlay').addEventListener('click',()=>{
   document.getElementById('sidebar').classList.remove('open');
   document.getElementById('overlay').classList.remove('open');
 });
+
+/* ── Toast / copy ── */
 function showToast(msg){
   const t=document.getElementById('toast');
   t.textContent=msg; t.classList.add('show');
