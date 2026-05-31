@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CV — Yann Dogny</title>
+  <link rel="stylesheet" href="../style.css"/>
+
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menu">☰</button>
+  <a href="../index.html" class="topbar-brand">Yann <span>Dogny</span></a>
+  <ul class="topbar-nav">
+<li><a href="../index.html" class=""><span class="nav-icon">🏠</span>accueil</a></li>
+<li><a href="../pages/cv.html" class="active"><span class="nav-icon">📋</span>cv</a></li>
+<li><a href="../pages/competences.html" class=""><span class="nav-icon">⚙️</span>compétences</a></li>
+<li><a href="../pages/projets.html" class=""><span class="nav-icon">🔧</span>projets</a></li>
+<li><a href="../pages/stages.html" class=""><span class="nav-icon">🏗️</span>stages</a></li>
+<li><a href="../pages/veille.html" class=""><span class="nav-icon">🔭</span>veille</a></li>
+<li><a href="../pages/contact.html" class=""><span class="nav-icon">📡</span>contact</a></li>
+  </ul>
+</header>
+
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="overlay"></div>
+
+<!-- SIDEBAR DRAWER -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-section-label">Navigation</div>
+  <a href="../index.html" class="nav-link"><span>🏠</span> accueil</a>
+<a href="../pages/cv.html" class="nav-link active"><span>📋</span> cv</a>
+<a href="../pages/competences.html" class="nav-link"><span>⚙️</span> compétences</a>
+<a href="../pages/projets.html" class="nav-link"><span>🔧</span> projets</a>
+<a href="../pages/stages.html" class="nav-link"><span>🏗️</span> stages</a>
+<a href="../pages/veille.html" class="nav-link"><span>🔭</span> veille</a>
+<a href="../pages/contact.html" class="nav-link"><span>📡</span> contact</a>
+
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+  <div class="page-header">
+    <div class="breadcrumb">~/portfolio / <span>cv</span></div>
+    <h1>Curriculum Vitae</h1>
+    <p class="sub">Informations, formations et expériences</p>
+  </div>
+
+  <div class="section-label">Informations &amp; coordonnées</div>
+  <div class="info-table" style="margin-bottom:2rem">
+    <div class="info-row"><span class="lbl">Naissance</span><span class="val">08 / 02 / 2006</span></div>
+    <div class="info-row"><span class="lbl">Ville</span><span class="val">Pau — 64000</span></div>
+    <div class="info-row"><span class="lbl">Email</span><span class="val"><a href="mailto:yanndogny47@gmail.com">yanndogny47@gmail.com</a></span></div>
+    <div class="info-row"><span class="lbl">Téléphone</span><span class="val"><a href="tel:0780429997">07 80 42 99 97</a></span></div>
+  </div>
+
+  <hr class="soft"/>
+
+  <div class="section-label">Formations</div>
+  <div class="timeline" style="margin-bottom:2rem">
+    <div class="tl-item">
+      <div class="period">2024 — 2026</div>
+      <span class="ttype edu">Formation</span>
+      <h3>BTS Services Informatiques aux Organisations</h3>
+      <div class="org">Lycée Saint-John Perse — Pau (64000)</div>
+      <p>Spécialité Solutions Logicielles et Applications Métiers (SLAM). Développement d'applications, gestion de projet, cybersécurité, systèmes &amp; réseaux.</p>
+    </div>
+    <div class="tl-item">
+      <div class="period">2021 — 2024</div>
+      <span class="ttype edu">Formation</span>
+      <h3>Baccalauréat Général</h3>
+      <div class="org">Cité Scolaire Stendhal — Aiguillon (47190)</div>
+      <p>Options Numérique et Sciences Informatiques (NSI) et Mathématiques.</p>
+    </div>
+  </div>
+
+  <hr class="soft"/>
+
+  <div class="section-label">Expériences professionnelles</div>
+  <div class="timeline" style="margin-bottom:2rem">
+    <div class="tl-item">
+      <div class="period">26 Mai — 27 Juin 2025</div>
+      <span class="ttype exp">Stage</span>
+      <h3>Développeur — Campus Connecté Comminges-Pyrénées</h3>
+      <div class="org">Saint-Gaudens (31800) · Travail en équipe</div>
+      <p>Création d'une solution applicative de gestion des présences, des absences, de prise de rendez-vous et d'inscription à des événements.</p>
+    </div>
+  </div>
+
+  <hr class="soft"/>
+
+  <div class="section-label">Langues</div>
+  <div class="card" style="max-width:420px">
+    <div class="lang-item">
+      <div class="lang-header"><span>Français</span><span class="level">Langue natale</span></div>
+      <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+    </div>
+    <div class="lang-item">
+      <div class="lang-header"><span>Anglais</span><span class="level">Niveau B1</span></div>
+      <div class="lang-bar"><div class="lang-fill" style="width:55%"></div></div>
+    </div>
+  </div>
+
+</main>
+
+<div class="toast" id="toast"></div>
+<script>
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('open');
+}
+document.getElementById('overlay').addEventListener('click',()=>{
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+});
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2200);
+}
+function copyText(e,text){
+  e.preventDefault(); e.stopPropagation();
+  navigator.clipboard.writeText(text).then(()=>showToast('✓ Copié !'));
+}
+function toggleDetail(id){
+  const el=document.getElementById('dp-'+id);
+  const btn=el.previousElementSibling;
+  el.classList.toggle('open');
+  btn.innerHTML=el.classList.contains('open')?'✕ Fermer':'› Détails';
+}
+</script>
+</body>
+</html>

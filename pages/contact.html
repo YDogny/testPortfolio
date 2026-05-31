@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — Yann Dogny</title>
+  <link rel="stylesheet" href="../style.css"/>
+
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menu">☰</button>
+  <a href="../index.html" class="topbar-brand">Yann <span>Dogny</span></a>
+  <ul class="topbar-nav">
+<li><a href="../index.html" class=""><span class="nav-icon">🏠</span>accueil</a></li>
+<li><a href="../pages/cv.html" class=""><span class="nav-icon">📋</span>cv</a></li>
+<li><a href="../pages/competences.html" class=""><span class="nav-icon">⚙️</span>compétences</a></li>
+<li><a href="../pages/projets.html" class=""><span class="nav-icon">🔧</span>projets</a></li>
+<li><a href="../pages/stages.html" class=""><span class="nav-icon">🏗️</span>stages</a></li>
+<li><a href="../pages/veille.html" class=""><span class="nav-icon">🔭</span>veille</a></li>
+<li><a href="../pages/contact.html" class="active"><span class="nav-icon">📡</span>contact</a></li>
+  </ul>
+</header>
+
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="overlay"></div>
+
+<!-- SIDEBAR DRAWER -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-section-label">Navigation</div>
+  <a href="../index.html" class="nav-link"><span>🏠</span> accueil</a>
+<a href="../pages/cv.html" class="nav-link"><span>📋</span> cv</a>
+<a href="../pages/competences.html" class="nav-link"><span>⚙️</span> compétences</a>
+<a href="../pages/projets.html" class="nav-link"><span>🔧</span> projets</a>
+<a href="../pages/stages.html" class="nav-link"><span>🏗️</span> stages</a>
+<a href="../pages/veille.html" class="nav-link"><span>🔭</span> veille</a>
+<a href="../pages/contact.html" class="nav-link active"><span>📡</span> contact</a>
+
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+  <div class="page-header">
+    <div class="breadcrumb">~/portfolio / <span>contact</span></div>
+    <h1>Contact</h1>
+    <p class="sub">Disponible pour stage, alternance ou projet — réponse sous 24h</p>
+  </div>
+
+  <div class="section-label">Canaux de communication</div>
+  <div class="contact-links">
+    <a href="mailto:yanndogny47@gmail.com" class="contact-link">
+      <div class="cl-icon">📧</div>
+      <div style="flex:1">
+        <div class="cl-label">Email · Canal principal</div>
+        <div class="cl-value">yanndogny47@gmail.com</div>
+      </div>
+      <button style="background:none;border:1px solid var(--border);border-radius:6px;padding:0.3rem 0.7rem;font-size:0.75rem;font-weight:500;color:var(--ink3);cursor:pointer;font-family:var(--sans);transition:all .15s" onclick="copyText(event,'yanndogny47@gmail.com')" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--ink3)'">Copier</button>
+    </a>
+    <a href="tel:0780429997" class="contact-link">
+      <div class="cl-icon">📞</div>
+      <div style="flex:1">
+        <div class="cl-label">Téléphone</div>
+        <div class="cl-value">07 80 42 99 97</div>
+      </div>
+      <button style="background:none;border:1px solid var(--border);border-radius:6px;padding:0.3rem 0.7rem;font-size:0.75rem;font-weight:500;color:var(--ink3);cursor:pointer;font-family:var(--sans);transition:all .15s" onclick="copyText(event,'0780429997')" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--ink3)'">Copier</button>
+    </a>
+    <div class="contact-link" style="cursor:default">
+      <div class="cl-icon">📍</div>
+      <div style="flex:1">
+        <div class="cl-label">Localisation</div>
+        <div class="cl-value">Pau, 64000 — Pyrénées-Atlantiques</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<div class="toast" id="toast"></div>
+<script>
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('open');
+}
+document.getElementById('overlay').addEventListener('click',()=>{
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+});
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2200);
+}
+function copyText(e,text){
+  e.preventDefault(); e.stopPropagation();
+  navigator.clipboard.writeText(text).then(()=>showToast('✓ Copié !'));
+}
+function toggleDetail(id){
+  const el=document.getElementById('dp-'+id);
+  const btn=el.previousElementSibling;
+  el.classList.toggle('open');
+  btn.innerHTML=el.classList.contains('open')?'✕ Fermer':'› Détails';
+}
+</script>
+</body>
+</html>

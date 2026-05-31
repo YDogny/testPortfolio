@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projets — Yann Dogny</title>
+  <link rel="stylesheet" href="../style.css"/>
+
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menu">☰</button>
+  <a href="../index.html" class="topbar-brand">Yann <span>Dogny</span></a>
+  <ul class="topbar-nav">
+<li><a href="../index.html" class=""><span class="nav-icon">🏠</span>accueil</a></li>
+<li><a href="../pages/cv.html" class=""><span class="nav-icon">📋</span>cv</a></li>
+<li><a href="../pages/competences.html" class=""><span class="nav-icon">⚙️</span>compétences</a></li>
+<li><a href="../pages/projets.html" class="active"><span class="nav-icon">🔧</span>projets</a></li>
+<li><a href="../pages/stages.html" class=""><span class="nav-icon">🏗️</span>stages</a></li>
+<li><a href="../pages/veille.html" class=""><span class="nav-icon">🔭</span>veille</a></li>
+<li><a href="../pages/contact.html" class=""><span class="nav-icon">📡</span>contact</a></li>
+  </ul>
+</header>
+
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="overlay"></div>
+
+<!-- SIDEBAR DRAWER -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-section-label">Navigation</div>
+  <a href="../index.html" class="nav-link"><span>🏠</span> accueil</a>
+<a href="../pages/cv.html" class="nav-link"><span>📋</span> cv</a>
+<a href="../pages/competences.html" class="nav-link"><span>⚙️</span> compétences</a>
+<a href="../pages/projets.html" class="nav-link active"><span>🔧</span> projets</a>
+<a href="../pages/stages.html" class="nav-link"><span>🏗️</span> stages</a>
+<a href="../pages/veille.html" class="nav-link"><span>🔭</span> veille</a>
+<a href="../pages/contact.html" class="nav-link"><span>📡</span> contact</a>
+
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+  <div class="page-header">
+    <div class="breadcrumb">~/portfolio / <span>projets</span></div>
+    <h1>Projets</h1>
+    <p class="sub">Mises en situation professionnelles — cliquez sur › Détails</p>
+  </div>
+
+  <div class="project-card">
+    <h3>Portfolio</h3>
+    <p>Application web présentant et mettant en valeur les compétences développé et leur mise en application.</p>
+    <div class="tags">
+      <span class="tag accent">HTML</span><span class="tag accent">CSS</span>
+      <span class="tag accent">Javascript</span><span class="tag blue">GitHub</span>
+    </div>
+    <button class="expand-btn" onclick="toggleDetail('portfolio')">› Détails</button>
+    <div class="detail-panel" id="dp-portfolio">
+      <h4>Compétences mobilisées</h4>
+      <ul>
+        <li>1.3 - Développement de la présence en ligne</li>
+        <li>1.4 - Travail en mode projet</li>
+        <li>1.5 - Mise à disposition d'un service aux utilisateurs</li>
+        <li>1.6 - Organisation de son développement professionnel</li>
+        <li>2.1 - Conception et développement d'une solution applicative</li>
+        <li>2.2 - Maintenance corrective ou évolutive</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <h3>CanisPro Éducation</h3>
+    <p>Application web moderne, sécurisée et professionnelle centralisant les informations, améliorant l’organisation des activités du centre et de facilitant la communication entre les différents acteurs, tout en accompagnant une approche responsable de la relation entre l’humain et l’animal de compagnie.</p>
+    <div class="tags">
+      <span class="tag accent">HTML</span><span class="tag accent">CSS</span>
+      <span class="tag accent">Javascript</span><span class="tag blue">GitHub</span>
+      <span class="tag blue">Symfony</span><span class="tag">MVC</span><span class="tag">DAO</span>
+    </div>
+    <button class="expand-btn" onclick="toggleDetail('canisPro')">› Détails</button>
+    <div class="detail-panel" id="dp-canisPro">
+      <h4>Compétences mobilisées</h4>
+      <ul>
+        <li>1.1 - Gestion du patrimoine informatique</li>
+        <li>1.3 - Développement de la présence en ligne</li>
+        <li>1.4 - Travail en mode projet</li>
+        <li>1.5 - Mise à disposition d'un service aux utilisateurs</li>
+        <li>1.6 - Organisation de son développement professionnel</li>
+        <li>2.1 - Conception et développement d'une solution applicative</li>
+        <li>2.2 - Maintenance corrective ou évolutive</li>
+        <li>2.3 - Gestion des données</li>
+        <li>3.3 - Sécurisation des équipements et des usages</li>
+        <li>3.5 - Cybersécurisation d'une solution applicative</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <h3>Projet Fâ</h3>
+    <p>Création d'un site web qui permet de gérer les entrées dans le parc via une billetterie en ligne pour gérer l'affluence grandissante.</p>
+    <div class="tags">
+      <span class="tag accent">PHP</span><span class="tag accent">CSS</span>
+      <span class="tag accent">HTML</span><span class="tag blue">GitHub</span>
+      <span class="tag">Méthode Agile</span>
+    </div>
+    <button class="expand-btn" onclick="toggleDetail('fa')">› Détails</button>
+    <div class="detail-panel" id="dp-fa">
+      <h4>Compétences mobilisées</h4>
+      <ul>
+        <li>1.3 - Développement de la présence en ligne</li>
+        <li>1.4 - Travail en mode projet — Agile / SCRUM</li>
+        <li>2.1 - Conception et développement d'une solution applicative</li>
+        <li>2.3 - Gestion des données — modélisation et requêtes SQL</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <h3>Pic du Midi</h3>
+    <p>Application web pour la présentation du pic du midi.</p>
+    <div class="tags">
+      <span class="tag accent">Wordpresse</span><span class="tag blue">CMS</span>
+      <span class="tag">Elementor</span><span class="tag">TablePress</span>
+    </div>
+    <button class="expand-btn" onclick="toggleDetail('pic')">› Détails</button>
+    <div class="detail-panel" id="dp-pic">
+      <h4>Compétences mobilisées</h4>
+      <ul>
+        <li>1.3 - Développement de la présence en ligne</li>
+        <li>1.6 - Organisation de son développement professionnel</li>
+        <li>2.1 - Conception et développement d'une solution applicative</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <h3>Site Web Personnel (CV)</h3>
+    <p>Application web servant de CV.</p>
+    <div class="tags">
+      <span class="tag accent">HTML</span><span class="tag accent">CSS</span>
+      <span class="tag accent">Javascript</span>
+    </div>
+    <button class="expand-btn" onclick="toggleDetail('cv')">› Détails</button>
+    <div class="detail-panel" id="dp-cv">
+      <h4>Compétences mobilisées</h4>
+      <ul>
+        <li>1.3 - Développement de la présence en ligne</li>
+        <li>1.6 - Organisation de son développement professionnel</li>
+        <li>2.1 - Conception et développement d'une solution applicative</li>
+      </ul>
+    </div>
+  </div>
+
+</main>
+
+<div class="toast" id="toast"></div>
+<script>
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('open');
+}
+document.getElementById('overlay').addEventListener('click',()=>{
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+});
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2200);
+}
+function copyText(e,text){
+  e.preventDefault(); e.stopPropagation();
+  navigator.clipboard.writeText(text).then(()=>showToast('✓ Copié !'));
+}
+function toggleDetail(id){
+  const el=document.getElementById('dp-'+id);
+  const btn=el.previousElementSibling;
+  el.classList.toggle('open');
+  btn.innerHTML=el.classList.contains('open')?'✕ Fermer':'› Détails';
+}
+</script>
+</body>
+</html>

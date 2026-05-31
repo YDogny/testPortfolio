@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Veille — Yann Dogny</title>
+  <link rel="stylesheet" href="../style.css"/>
+
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menu">☰</button>
+  <a href="../index.html" class="topbar-brand">Yann <span>Dogny</span></a>
+  <ul class="topbar-nav">
+<li><a href="../index.html" class=""><span class="nav-icon">🏠</span>accueil</a></li>
+<li><a href="../pages/cv.html" class=""><span class="nav-icon">📋</span>cv</a></li>
+<li><a href="../pages/competences.html" class=""><span class="nav-icon">⚙️</span>compétences</a></li>
+<li><a href="../pages/projets.html" class=""><span class="nav-icon">🔧</span>projets</a></li>
+<li><a href="../pages/stages.html" class=""><span class="nav-icon">🏗️</span>stages</a></li>
+<li><a href="../pages/veille.html" class="active"><span class="nav-icon">🔭</span>veille</a></li>
+<li><a href="../pages/contact.html" class=""><span class="nav-icon">📡</span>contact</a></li>
+  </ul>
+</header>
+
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="overlay"></div>
+
+<!-- SIDEBAR DRAWER -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-section-label">Navigation</div>
+  <a href="../index.html" class="nav-link"><span>🏠</span> accueil</a>
+<a href="../pages/cv.html" class="nav-link"><span>📋</span> cv</a>
+<a href="../pages/competences.html" class="nav-link"><span>⚙️</span> compétences</a>
+<a href="../pages/projets.html" class="nav-link"><span>🔧</span> projets</a>
+<a href="../pages/stages.html" class="nav-link"><span>🏗️</span> stages</a>
+<a href="../pages/veille.html" class="nav-link active"><span>🔭</span> veille</a>
+<a href="../pages/contact.html" class="nav-link"><span>📡</span> contact</a>
+
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+  <div class="page-header">
+    <div class="breadcrumb">~/portfolio / <span>veille</span></div>
+    <h1>Veille Technologique</h1>
+    <p class="sub">Surveillance active des tendances et innovations IT</p>
+  </div>
+
+  <div class="section-label">Sujet de veille</div>
+  <div class="card" style="margin-bottom:2rem">
+    <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.09em;color:var(--ink3);margin-bottom:0.5rem">Thématique principale</div>
+    <h3 style="font-family:var(--serif);font-size:1.05rem;color:var(--ink);line-height:1.5;margin-bottom:0.75rem">Les nouvelles tendances du développement web et mobile : vers des applications plus intelligentes et performantes</h3>
+    <p style="font-size:0.85rem;color:var(--ink2);line-height:1.75">Dans un contexte d'évolution constante des technologies, les frameworks, architectures et outils de développement se transforment rapidement. Cette veille suit les innovations qui redéfinissent la création d'applications web et mobiles modernes.</p>
+  </div>
+
+  <div class="section-label">Mots-clés</div>
+  <div class="tags" style="margin-bottom:2rem">
+    <span class="tag accent">Progressive Web Apps</span>
+    <span class="tag accent">Intelligence Artificielle</span>
+    <span class="tag blue">Web Assembly</span>
+    <span class="tag blue">Edge Computing</span>
+    <span class="tag">DevSecOps</span>
+    <span class="tag">API REST / GraphQL</span>
+    <span class="tag">Low-Code / No-Code</span>
+    <span class="tag">Cloud natif</span>
+  </div>
+
+  <hr class="soft"/>
+
+  <div class="section-label">Sources &amp; outils de veille</div>
+  <div class="source-grid" style="margin-bottom:2rem">
+    <div class="source-card">
+      <div style="font-size:1.2rem">📡</div>
+      <h4>Flux RSS</h4>
+      <p>Dev.to, CSS-Tricks, Smashing Magazine — actualités développement web en continu.</p>
+      <span class="src-type">RSS · Quotidien</span>
+    </div>
+    <div class="source-card">
+      <div style="font-size:1.2rem">🐦</div>
+      <h4>Réseaux sociaux</h4>
+      <p>Listes X/Twitter et LinkedIn spécialisées tech. Comptes officiels des frameworks.</p>
+      <span class="src-type">Social · Temps réel</span>
+    </div>
+    <div class="source-card">
+      <div style="font-size:1.2rem">🔔</div>
+      <h4>Google Alerts</h4>
+      <p>Alertes hebdomadaires sur les mots-clés de veille : nouveaux frameworks, failles, releases.</p>
+      <span class="src-type">Alertes · Hebdomadaire</span>
+    </div>
+    <div class="source-card">
+      <div style="font-size:1.2rem">📚</div>
+      <h4>Documentation officielle</h4>
+      <p>MDN Web Docs, documentation Symfony, PHP.net — sources primaires et fiables.</p>
+      <span class="src-type">Docs · À la demande</span>
+    </div>
+    <div class="source-card">
+      <div style="font-size:1.2rem">🎥</div>
+      <h4>Conférences &amp; talks</h4>
+      <p>YouTube — conférences DevoXX, SymfonyCon. Présentations de nouveautés techniques.</p>
+      <span class="src-type">Vidéo · Mensuel</span>
+    </div>
+    <div class="source-card">
+      <div style="font-size:1.2rem">💼</div>
+      <h4>Communautés pro</h4>
+      <p>GitHub Trending, Stack Overflow, Discord dev — tendances et discussions actives.</p>
+      <span class="src-type">Communauté · Hebdomadaire</span>
+    </div>
+  </div>
+
+  <hr class="soft"/>
+
+  <div class="section-label">Méthodologie</div>
+  <div class="method-list">
+    <div class="method-step"><div class="step-num">01</div><div class="step-content"><h4>Collecte automatique</h4><p>Agrégation des flux RSS, alertes Google et notifications réseaux sociaux.</p></div></div>
+    <div class="method-step"><div class="step-num">02</div><div class="step-content"><h4>Filtrage par pertinence</h4><p>Sélection des articles selon leur fiabilité, leur source et leur lien avec les technologies suivies.</p></div></div>
+    <div class="method-step"><div class="step-num">03</div><div class="step-content"><h4>Synthèse hebdomadaire</h4><p>Résumé des informations retenues et classement par importance et applicabilité.</p></div></div>
+    <div class="method-step"><div class="step-num">04</div><div class="step-content"><h4>Archivage</h4><p>Conservation des sources et notes dans un journal de veille structuré.</p></div></div>
+  </div>
+
+</main>
+
+<div class="toast" id="toast"></div>
+<script>
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('open');
+}
+document.getElementById('overlay').addEventListener('click',()=>{
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+});
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2200);
+}
+function copyText(e,text){
+  e.preventDefault(); e.stopPropagation();
+  navigator.clipboard.writeText(text).then(()=>showToast('✓ Copié !'));
+}
+function toggleDetail(id){
+  const el=document.getElementById('dp-'+id);
+  const btn=el.previousElementSibling;
+  el.classList.toggle('open');
+  btn.innerHTML=el.classList.contains('open')?'✕ Fermer':'› Détails';
+}
+</script>
+</body>
+</html>

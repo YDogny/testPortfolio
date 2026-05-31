@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stages — Yann Dogny</title>
+  <link rel="stylesheet" href="../style.css"/>
+
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menu">☰</button>
+  <a href="../index.html" class="topbar-brand">Yann <span>Dogny</span></a>
+  <ul class="topbar-nav">
+<li><a href="../index.html" class=""><span class="nav-icon">🏠</span>accueil</a></li>
+<li><a href="../pages/cv.html" class=""><span class="nav-icon">📋</span>cv</a></li>
+<li><a href="../pages/competences.html" class=""><span class="nav-icon">⚙️</span>compétences</a></li>
+<li><a href="../pages/projets.html" class=""><span class="nav-icon">🔧</span>projets</a></li>
+<li><a href="../pages/stages.html" class="active"><span class="nav-icon">🏗️</span>stages</a></li>
+<li><a href="../pages/veille.html" class=""><span class="nav-icon">🔭</span>veille</a></li>
+<li><a href="../pages/contact.html" class=""><span class="nav-icon">📡</span>contact</a></li>
+  </ul>
+</header>
+
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="overlay"></div>
+
+<!-- SIDEBAR DRAWER -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-section-label">Navigation</div>
+  <a href="../index.html" class="nav-link"><span>🏠</span> accueil</a>
+<a href="../pages/cv.html" class="nav-link"><span>📋</span> cv</a>
+<a href="../pages/competences.html" class="nav-link"><span>⚙️</span> compétences</a>
+<a href="../pages/projets.html" class="nav-link"><span>🔧</span> projets</a>
+<a href="../pages/stages.html" class="nav-link active"><span>🏗️</span> stages</a>
+<a href="../pages/veille.html" class="nav-link"><span>🔭</span> veille</a>
+<a href="../pages/contact.html" class="nav-link"><span>📡</span> contact</a>
+
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+  <div class="page-header">
+    <div class="breadcrumb">~/portfolio / <span>stages</span></div>
+    <h1>Stages</h1>
+    <p class="sub">Immersions professionnelles — cliquez sur › Détails</p>
+  </div>
+
+  <div class="project-card">
+    <div class="pc-meta">Stage 1ère année · 26 Mai — 27 Juin 2025</div>
+    <h3>Campus Connecté Comminges-Pyrénées</h3>
+    <div style="font-size:0.82rem;color:var(--ink3);margin-bottom:0.75rem">📍 Saint-Gaudens (31800) · Travail en équipe</div>
+    <p>Création d'une solution applicative complète de gestion des présences et des absences, prise de rendez-vous et inscription à des événements pour le Campus Connecté.</p>
+    <div class="tags">
+      <span class="tag accent">Développement web</span>
+      <span class="tag blue">Travail en équipe</span>
+      <span class="tag">Gestion de projet</span>
+    </div>
+    <button class="expand-btn" onclick="toggleDetail('campus')">› Détails</button>
+    <div class="detail-panel" id="dp-campus">
+      <h4>Missions réalisées</h4>
+      <ul>
+        <li>Création d'un module de gestion des présences et des absences</li>
+        <li>Développement d'un système de prise de rendez-vous</li>
+        <li>Mise en place d'une fonctionnalité d'inscription à des événements</li>
+        <li>Travail en équipe sur un même code source</li>
+      </ul>
+      <h4 style="margin-top:0.85rem">Compétences mobilisées</h4>
+      <ul>
+        <li>Mise à disposition des utilisateurs d'un service informatique (1.5)</li>
+        <li>Travail en mode projet (1.4)</li>
+        <li>Conception et développement d'une solution applicative (2.1)</li>
+        <li>Gestion des données (2.3)</li>
+        <li>Cybersécurisation d'une solution applicative (3.5)</li>
+      </ul>
+    </div>
+  </div>
+
+</main>
+
+<div class="toast" id="toast"></div>
+<script>
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('open');
+}
+document.getElementById('overlay').addEventListener('click',()=>{
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+});
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2200);
+}
+function copyText(e,text){
+  e.preventDefault(); e.stopPropagation();
+  navigator.clipboard.writeText(text).then(()=>showToast('✓ Copié !'));
+}
+function toggleDetail(id){
+  const el=document.getElementById('dp-'+id);
+  const btn=el.previousElementSibling;
+  el.classList.toggle('open');
+  btn.innerHTML=el.classList.contains('open')?'✕ Fermer':'› Détails';
+}
+</script>
+</body>
+</html>

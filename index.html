@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio — Yann Dogny</title>
+  <link rel="stylesheet" href="style.css"/>
+
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menu">☰</button>
+  <a href="index.html" class="topbar-brand">Yann <span>Dogny</span></a>
+  <ul class="topbar-nav">
+<li><a href="index.html" class="active"><span class="nav-icon">🏠</span>accueil</a></li>
+<li><a href="pages/cv.html" class=""><span class="nav-icon">📋</span>cv</a></li>
+<li><a href="pages/competences.html" class=""><span class="nav-icon">⚙️</span>compétences</a></li>
+<li><a href="pages/projets.html" class=""><span class="nav-icon">🔧</span>projets</a></li>
+<li><a href="pages/stages.html" class=""><span class="nav-icon">🏗️</span>stages</a></li>
+<li><a href="pages/veille.html" class=""><span class="nav-icon">🔭</span>veille</a></li>
+<li><a href="pages/contact.html" class=""><span class="nav-icon">📡</span>contact</a></li>
+  </ul>
+</header>
+
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="overlay"></div>
+
+<!-- SIDEBAR DRAWER -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-section-label">Navigation</div>
+  <a href="index.html" class="nav-link active"><span>🏠</span> accueil</a>
+<a href="pages/cv.html" class="nav-link"><span>📋</span> cv</a>
+<a href="pages/competences.html" class="nav-link"><span>⚙️</span> compétences</a>
+<a href="pages/projets.html" class="nav-link"><span>🔧</span> projets</a>
+<a href="pages/stages.html" class="nav-link"><span>🏗️</span> stages</a>
+<a href="pages/veille.html" class="nav-link"><span>🔭</span> veille</a>
+<a href="pages/contact.html" class="nav-link"><span>📡</span> contact</a>
+
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+  <div class="page-header" style="padding-top:1rem">
+    <div class="breadcrumb">~/portfolio</div>
+    <h1>Yann Dogny</h1>
+    <p class="sub">Développeur — BTS SIO SLAM · Pau</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2.5rem">
+    <div>
+      <p style="font-size:1.05rem;color:var(--ink2);line-height:1.85;margin-bottom:1.25rem">
+        Étudiant en deuxième année de BTS SIO option SLAM, je suis passionné par le développement d'applications web et mobiles. Logique, adaptable et persévérant, j'aime transformer des idées en solutions concrètes.
+      </p>
+      <div class="tags">
+        <span class="tag accent">Logique</span>
+        <span class="tag accent">Adaptable</span>
+        <span class="tag accent">Sérieux</span>
+        <span class="tag accent">Passionné</span>
+        <span class="tag accent">Persévérant</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0.75rem">
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem 1.25rem;box-shadow:var(--shadow);text-align:center">
+        <div style="font-size:2rem;font-weight:700;color:var(--accent);font-family:var(--serif);letter-spacing:-0.03em">2+</div>
+        <div style="font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink3);margin-top:0.15rem">Projets réalisés</div>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem 1.25rem;box-shadow:var(--shadow);text-align:center">
+        <div style="font-size:2rem;font-weight:700;color:var(--accent);font-family:var(--serif);letter-spacing:-0.03em">1</div>
+        <div style="font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink3);margin-top:0.15rem">Stage effectué</div>
+      </div>
+    </div>
+  </div>
+
+  
+</main>
+
+<div class="toast" id="toast"></div>
+<script>
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('open');
+}
+document.getElementById('overlay').addEventListener('click',()=>{
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+});
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2200);
+}
+function copyText(e,text){
+  e.preventDefault(); e.stopPropagation();
+  navigator.clipboard.writeText(text).then(()=>showToast('✓ Copié !'));
+}
+function toggleDetail(id){
+  const el=document.getElementById('dp-'+id);
+  const btn=el.previousElementSibling;
+  el.classList.toggle('open');
+  btn.innerHTML=el.classList.contains('open')?'✕ Fermer':'› Détails';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Compétences — Yann Dogny</title>
+  <link rel="stylesheet" href="../style.css"/>
+
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menu">☰</button>
+  <a href="../index.html" class="topbar-brand">Yann <span>Dogny</span></a>
+  <ul class="topbar-nav">
+<li><a href="../index.html" class=""><span class="nav-icon">🏠</span>accueil</a></li>
+<li><a href="../pages/cv.html" class=""><span class="nav-icon">📋</span>cv</a></li>
+<li><a href="../pages/competences.html" class="active"><span class="nav-icon">⚙️</span>compétences</a></li>
+<li><a href="../pages/projets.html" class=""><span class="nav-icon">🔧</span>projets</a></li>
+<li><a href="../pages/stages.html" class=""><span class="nav-icon">🏗️</span>stages</a></li>
+<li><a href="../pages/veille.html" class=""><span class="nav-icon">🔭</span>veille</a></li>
+<li><a href="../pages/contact.html" class=""><span class="nav-icon">📡</span>contact</a></li>
+  </ul>
+</header>
+
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="overlay"></div>
+
+<!-- SIDEBAR DRAWER -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-section-label">Navigation</div>
+  <a href="../index.html" class="nav-link"><span>🏠</span> accueil</a>
+<a href="../pages/cv.html" class="nav-link"><span>📋</span> cv</a>
+<a href="../pages/competences.html" class="nav-link active"><span>⚙️</span> compétences</a>
+<a href="../pages/projets.html" class="nav-link"><span>🔧</span> projets</a>
+<a href="../pages/stages.html" class="nav-link"><span>🏗️</span> stages</a>
+<a href="../pages/veille.html" class="nav-link"><span>🔭</span> veille</a>
+<a href="../pages/contact.html" class="nav-link"><span>📡</span> contact</a>
+
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+  <div class="page-header">
+    <div class="breadcrumb">~/portfolio / <span>compétences</span></div>
+    <h1>Compétences</h1>
+    <p class="sub">Stack technique et référentiel BTS SIO</p>
+  </div>
+
+  <div class="section-label">Stack technique</div>
+  <div class="skill-grid" style="margin-bottom:2rem">
+    <div class="skill-block">
+      <h3>Langages</h3>
+      <div class="tags">
+        <span class="tag accent">Java</span><span class="tag accent">Python</span>
+        <span class="tag accent">JavaScript</span><span class="tag blue">PHP</span>
+        <span class="tag blue">SQL / MySQL</span><span class="tag">NoSQL</span>
+        <span class="tag">HTML</span><span class="tag">CSS</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <h3>Frameworks &amp; CMS</h3>
+      <div class="tags">
+        <span class="tag accent">Symfony</span><span class="tag blue">Android</span>
+        <span class="tag">WordPress</span><span class="tag">PrestaShop</span><span class="tag">Joomla</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <h3>Outils &amp; méthodes</h3>
+      <div class="tags">
+        <span class="tag accent">Git</span><span class="tag blue">VS Code</span>
+        <span class="tag">MVC</span><span class="tag">DAO</span>
+        <span class="tag">Agile / SCRUM</span><span class="tag">Gantt</span>
+        <span class="tag">UML</span><span class="tag">MERISE</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <h3>Cybersécurité</h3>
+      <div class="tags">
+        <span class="tag">RGPD / CNIL</span><span class="tag">SonarQube</span>
+        <span class="tag">Snyk</span><span class="tag">Tests unitaires</span>
+        <span class="tag">SSH / FTP</span><span class="tag">Pare-feu</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="soft"/>
+
+  <div class="section-label">Référentiel BTS SIO — Blocs de compétences</div>
+  <p style="font-size:0.78rem;color:var(--ink3);margin-bottom:1rem;font-style:italic">// 1 — Support et mise à disposition des services informatiques</p>
+
+  <details>
+    <summary>1.1 — Gestion du patrimoine informatique</summary>
+    <div class="details-body">
+      <ul>
+        <li>Recenser et identifier les ressources numériques</li>
+        <li>Exploiter des référentiels, normes et standards adoptés par le prestataire</li>
+        <li>Mettre en place et vérifier les niveaux d'habilitation associés à un service</li>
+        <li>Gérer des sauvegardes et vérifier la continuité du service</li>
+        <li>Vérifier le respect des règles d'utilisation des ressources numériques</li>
+      </ul>
+    </div>
+  </details>
+  <details>
+    <summary>1.2 — Réponse aux incidents et demandes d'assistance</summary>
+    <div class="details-body">
+      <ul>
+        <li>Collecter, suivre et orienter des demandes</li>
+        <li>Traiter des demandes concernant les services réseau, système et applicatifs</li>
+      </ul>
+    </div>
+  </details>
+  <details>
+    <summary>1.3 — Développement de la présence en ligne</summary>
+    <div class="details-body">
+      <ul>
+        <li>Participer à la valorisation de l'image de l'organisation sur les médias numériques</li>
+        <li>Référencer les services en ligne et mesurer leur visibilité</li>
+        <li>Participer à l'évolution d'un site Web exploitant les données de l'organisation</li>
+      </ul>
+      <div class="used-in">Utilisé dans : <span>Projet Fâ · Gestion Commandes V2 · Stage Campus Connecté</span></div>
+    </div>
+  </details>
+  <details>
+    <summary>1.4 — Travail en mode projet</summary>
+    <div class="details-body">
+      <ul>
+        <li>Analyser les objectifs et les modalités d'organisation d'un projet</li>
+        <li>Planifier les activités (Gantt, SCRUM)</li>
+        <li>Évaluer les indicateurs de suivi d'un projet et analyser les écarts</li>
+      </ul>
+      <div class="used-in">Utilisé dans : <span>Projet Fâ · Gestion Commandes V2</span></div>
+    </div>
+  </details>
+  <details>
+    <summary>1.5 — Mise à disposition d'un service aux utilisateurs</summary>
+    <div class="details-body">
+      <ul>
+        <li>Réaliser les tests d'intégration et d'acceptation d'un service</li>
+        <li>Déployer un service</li>
+        <li>Accompagner les utilisateurs dans la mise en place d'un service</li>
+      </ul>
+      <div class="used-in">Utilisé dans : <span>Stage Campus Connecté</span></div>
+    </div>
+  </details>
+  <details>
+    <summary>1.6 — Organisation du développement professionnel</summary>
+    <div class="details-body">
+      <ul>
+        <li>Mettre en place son environnement d'apprentissage personnel</li>
+        <li>Mettre en œuvre des outils et stratégies de veille informationnelle</li>
+        <li>Gérer son identité professionnelle et développer son projet professionnel</li>
+      </ul>
+    </div>
+  </details>
+
+  <p style="font-size:0.78rem;color:var(--ink3);margin:1.5rem 0 1rem;font-style:italic">// 2 — Conception et développement d'applications</p>
+
+  <details>
+    <summary>2.1 — Conception et développement d'une solution applicative</summary>
+    <div class="details-body">
+      <ul>
+        <li>Analyser un besoin exprimé et son contexte juridique</li>
+        <li>Modéliser et concevoir l'architecture d'une solution applicative</li>
+        <li>Exploiter les ressources d'un framework (Symfony)</li>
+        <li>Développer, identifier ou adapter des composants logiciels</li>
+        <li>Intégrer en continu les versions d'une solution (Git)</li>
+        <li>Réaliser les tests nécessaires à la validation ou à la mise en production</li>
+        <li>Rédiger les documentations technique et utilisateur</li>
+      </ul>
+      <div class="used-in">Utilisé dans : <span>Gestion Commandes V2 · Projet Fâ · Stage Campus Connecté</span></div>
+    </div>
+  </details>
+  <details>
+    <summary>2.2 — Maintenance corrective ou évolutive</summary>
+    <div class="details-body">
+      <ul>
+        <li>Recueillir, analyser et mettre à jour les informations sur une version</li>
+        <li>Évaluer la qualité d'une solution applicative (SonarQube, Snyk)</li>
+        <li>Analyser et corriger un dysfonctionnement</li>
+        <li>Mettre à jour les documentations technique et d'utilisation</li>
+      </ul>
+    </div>
+  </details>
+  <details>
+    <summary>2.3 — Gestion des données</summary>
+    <div class="details-body">
+      <ul>
+        <li>Exploiter des données à l'aide d'un langage de requêtes SQL</li>
+        <li>Développer des fonctionnalités dans un SGBD (MySQL, NoSQL)</li>
+        <li>Concevoir ou adapter une base de données (MERISE, UML)</li>
+        <li>Administrer et déployer une base de données</li>
+      </ul>
+      <div class="used-in">Utilisé dans : <span>Gestion Commandes V2 · Projet Fâ</span></div>
+    </div>
+  </details>
+
+  <p style="font-size:0.78rem;color:var(--ink3);margin:1.5rem 0 1rem;font-style:italic">// 3 — Cybersécurité des services informatiques</p>
+
+  <details>
+    <summary>3.1 — Protection des données à caractère personnel</summary>
+    <div class="details-body">
+      <ul>
+        <li>Recenser les traitements sur les données à caractère personnel</li>
+        <li>Identifier les risques liés à la collecte, au traitement et au stockage</li>
+        <li>Appliquer la réglementation RGPD / CNIL</li>
+      </ul>
+    </div>
+  </details>
+  <details>
+    <summary>3.2 — Préservation de l'identité numérique de l'organisation</summary>
+    <div class="details-body">
+      <ul>
+        <li>Protection de l'identité numérique d'une organisation</li>
+        <li>Déploiement de moyens approprier de preuve électronique</li>
+      </ul>
+    </div>
+  </details>
+  <details>
+    <summary>3.3 — Sécurisation des équipements et des usages</summary>
+    <div class="details-body">
+      <ul>
+        <li>Informer les utilisateurs sur les risques numériques</li>
+        <li>Identifier les menaces et mettre en œuvre les défenses appropriées</li>
+        <li>Gérer les accès et les privilèges (pare-feu, antivirus)</li>
+      </ul>
+    </div>
+  </details>
+  <details>
+    <summary>3.4 — Garantie de la disponibilité, de l’intégrité et de la confidentialité</summary>
+    <div class="details-body">
+      <ul>
+        <li>Caractériser les risques liés à l’utilisation malveillante d’un service informatique</li>
+        <li>Recenser les conséquences d’une perte de disponibilité, d’intégrité ou de confidentialité</li>
+        <li>Identifier les obligations légales (archivage, protection)</li>
+        <li>Organiser la collecte et la conservation des preuves numériques</li>
+        <li>Appliquer les procédures légales</li>
+      </ul>
+      <div class="used-in">Utilisé dans : <span>Stage Campus Connecté</span></div>
+    </div>
+  </details>
+  <details>
+    <summary>3.5 — Cybersécurisation d'une solution applicative</summary>
+    <div class="details-body">
+      <ul>
+        <li>Prendre en compte la sécurité dans un projet de développement</li>
+        <li>Analyser les connexions (logs) et prévenir les attaques courantes</li>
+        <li>Mettre en conformité une solution applicative avec un référentiel de sécurité</li>
+      </ul>
+      <div class="used-in">Utilisé dans : <span>Stage Campus Connecté</span></div>
+    </div>
+  </details>
+
+</main>
+
+<div class="toast" id="toast"></div>
+<script>
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('open');
+}
+document.getElementById('overlay').addEventListener('click',()=>{
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+});
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2200);
+}
+function copyText(e,text){
+  e.preventDefault(); e.stopPropagation();
+  navigator.clipboard.writeText(text).then(()=>showToast('✓ Copié !'));
+}
+function toggleDetail(id){
+  const el=document.getElementById('dp-'+id);
+  const btn=el.previousElementSibling;
+  el.classList.toggle('open');
+  btn.innerHTML=el.classList.contains('open')?'✕ Fermer':'› Détails';
+}
+</script>
+</body>
+</html>
